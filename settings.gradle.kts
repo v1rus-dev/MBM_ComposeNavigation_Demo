@@ -23,5 +23,5 @@ rootProject.name = "MBM_ComposeNavigation_Demo"
 include(":app_decompose")
 include(":app_voyager")
 include(":design")
-include(":api")
+include(":data")
 include(":database")

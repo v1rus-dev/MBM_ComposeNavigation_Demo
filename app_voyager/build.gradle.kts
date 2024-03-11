@@ -52,8 +52,7 @@ android {
 
 dependencies {
     implementation(project(":design"))
-    implementation(project(":api"))
-    implementation(project(":database"))
+    implementation(project(":data"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -78,4 +77,7 @@ dependencies {
     implementation(libs.voyager.transitions)
     implementation(libs.voyager.koin)
     implementation(libs.voyager.hilt)
+
+    implementation(libs.koin.core)
+    implementation(libs.koin.android)
 }

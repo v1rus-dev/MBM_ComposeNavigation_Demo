@@ -1,0 +1,16 @@
+-- Merging decision tree log ---
+manifest
+ADDED from D:\Projects\MBM_ComposeNavigation_Demo\data\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest436882055426299314.xml:2:13-83
+INJECTED from D:\Projects\MBM_ComposeNavigation_Demo\data\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest436882055426299314.xml:2:13-83
+	package
+		INJECTED from D:\Projects\MBM_ComposeNavigation_Demo\data\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest436882055426299314.xml
+	xmlns:android
+		ADDED from D:\Projects\MBM_ComposeNavigation_Demo\data\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest436882055426299314.xml:2:23-81
+uses-sdk
+INJECTED from D:\Projects\MBM_ComposeNavigation_Demo\data\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest436882055426299314.xml reason: use-sdk injection requested
+INJECTED from D:\Projects\MBM_ComposeNavigation_Demo\data\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest436882055426299314.xml
+INJECTED from D:\Projects\MBM_ComposeNavigation_Demo\data\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest436882055426299314.xml
+	android:targetSdkVersion
+		INJECTED from D:\Projects\MBM_ComposeNavigation_Demo\data\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest436882055426299314.xml
+	android:minSdkVersion
+		INJECTED from D:\Projects\MBM_ComposeNavigation_Demo\data\build\intermediates\tmp\ProcessLibraryManifest\debug\tempAndroidManifest436882055426299314.xml

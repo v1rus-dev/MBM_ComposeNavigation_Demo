@@ -45,3 +45,6 @@ Qapp_decompose/src/main/kotlin/yegor/cheprasov/mbm_decompose/compose/RootScreen.
 Mapp_voyager/src/main/kotlin/yegor/cheprasov/mbm_voyager/voyager/RootScreen.kt,6\b\6ba2a8145fa1e2b6d1fd96d750e12dda7f41d1de
 I
 database/build.gradle.kts,9\6\96a21acca2b2f6a76f7c9a000be3e468a108c33b
+:
+
+.gitignore,a\5\a5cc2925ca8258af241be7e5b0381edf30266302
