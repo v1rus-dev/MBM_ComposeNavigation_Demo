@@ -32,7 +32,7 @@ android {
 }
 
 dependencies {
-    implementation(project(":database"))
+    api(project(":database"))
     implementation(libs.androidx.core.ktx)
 
     implementation(libs.koin.core)

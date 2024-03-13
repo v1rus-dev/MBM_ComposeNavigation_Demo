@@ -8,5 +8,11 @@ import yegor.cheprasov.mbm_voyager.screenModels.NoteScreenModel
 val screenModelsModule = module {
     factory { AllNotesScreenModel(notesRepository = get()) }
     factory { FavoriteNotesScreenModel(notesRepository = get()) }
-    factory { NoteScreenModel(notesRepository = get()) }
+    factory { parameters ->
+        NoteScreenModel(
+            noteUid = parameters[0],
+            initTitle = parameters[1],
+            notesRepository = get()
+        )
+    }
 }
