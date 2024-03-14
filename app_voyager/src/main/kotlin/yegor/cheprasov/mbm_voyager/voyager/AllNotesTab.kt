@@ -21,6 +21,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.koin.getNavigatorScreenModel
+import cafe.adriel.voyager.navigator.bottomSheet.LocalBottomSheetNavigator
 import cafe.adriel.voyager.navigator.tab.Tab
 import cafe.adriel.voyager.navigator.tab.TabOptions
 import yegor.cheprasov.mbm_design.di.NoteCardUI
@@ -47,6 +48,7 @@ object AllNotesTab : Tab {
     override fun Content() {
 
         val rootNavigator = RootNavigator.getRootNavigatorOrThrow()
+        val bottomSheetNavigator = LocalBottomSheetNavigator.current
 
         val screenModel = rootNavigator.getNavigatorScreenModel<AllNotesScreenModel>()
 
@@ -76,6 +78,8 @@ object AllNotesTab : Tab {
                     items(items = state.listOfNotes, key = { it.uid }) {
                         NoteCardUI(title = it.title, desc = it.body, onClick = {
                             rootNavigator.push(NoteScreen(it.uid, it.title))
+                        }, onLongClick = {
+                            bottomSheetNavigator.show(NoteBottomSheet(it.uid, it.isFavorite))
                         })
                     }
                 }

@@ -23,7 +23,7 @@ class FavoriteNotesScreenModel(
 
     private fun observeFavoriteNotes() = scope.launch {
         notesRepository
-            .observeNotes()
+            .observeFavoriteNotes()
             .collectLatest { list ->
                 mutableState.update { it.copy(listOfNotes =  list) }
             }

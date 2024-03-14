@@ -26,6 +26,9 @@ interface NoteDao {
     fun observeFavoriteNotes(): Flow<List<Note>>
 
     @Query("DELETE FROM note WHERE uid = :uid")
-    fun removeNote(uid: Int)
+    suspend fun removeNote(uid: Int)
+
+    @Query("UPDATE note SET isFavorite = :newStatus WHERE uid = :uid")
+    suspend fun updateFavoriteStatus(uid: Int, newStatus: Boolean)
 
 }

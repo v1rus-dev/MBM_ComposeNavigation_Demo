@@ -3,6 +3,7 @@ package yegor.cheprasov.mbm_voyager.di
 import org.koin.dsl.module
 import yegor.cheprasov.mbm_voyager.screenModels.AllNotesScreenModel
 import yegor.cheprasov.mbm_voyager.screenModels.FavoriteNotesScreenModel
+import yegor.cheprasov.mbm_voyager.screenModels.NoteBottomSheetScreenModel
 import yegor.cheprasov.mbm_voyager.screenModels.NoteScreenModel
 
 val screenModelsModule = module {
@@ -12,6 +13,13 @@ val screenModelsModule = module {
         NoteScreenModel(
             noteUid = parameters[0],
             initTitle = parameters[1],
+            notesRepository = get()
+        )
+    }
+
+    factory { parameters ->
+        NoteBottomSheetScreenModel(
+            noteId = parameters[0],
             notesRepository = get()
         )
     }

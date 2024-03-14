@@ -30,6 +30,10 @@ class NotesRepository(
     fun observeFavoriteNotes(): Flow<List<Note>> = noteDao.observeFavoriteNotes()
         .flowOn(coroutineDispatcher)
 
+    suspend fun updateFavoriteStatus(uid: Int, newStatus: Boolean) = withContext(coroutineDispatcher) {
+        noteDao.updateFavoriteStatus(uid, newStatus)
+    }
+
     suspend fun getNoteByUid(uid: Int) = withContext(coroutineDispatcher) {
         noteDao.getNote(uid)
     }

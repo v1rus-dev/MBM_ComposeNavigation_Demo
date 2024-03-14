@@ -16,7 +16,7 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -39,7 +39,7 @@ import yegor.cheprasov.mbm_voyager.screenModels.NoteScreenModel
 
 data class NoteScreen(
     val noteUid: Int? = null,
-    val initTitle: String? = null
+    val initTitle: String = ""
 ) : Screen {
     @OptIn(ExperimentalFoundationApi::class)
     @Composable
@@ -57,14 +57,7 @@ data class NoteScreen(
             }
         }
 
-        var dialogIsOpen by remember {
-            mutableStateOf<DialogType?>(null)
-        }
-
-        LaunchedEffect(key1 = noteScreen.dialog) {
-            dialogIsOpen = noteScreen.dialog.value
-        }
-
+        val dialogIsOpen by noteScreen.dialog.collectAsState()
 
         Screen(
             title = noteScreen.title,

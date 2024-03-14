@@ -3,6 +3,8 @@ package yegor.cheprasov.mbm_voyager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.ui.unit.dp
 import cafe.adriel.voyager.navigator.CurrentScreen
 import cafe.adriel.voyager.navigator.Navigator
 import cafe.adriel.voyager.navigator.bottomSheet.BottomSheetNavigator
@@ -15,7 +17,9 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         setContent {
             MBM_ComposeNavigation_DemoTheme {
-                BottomSheetNavigator {
+                BottomSheetNavigator(
+                    sheetShape = RoundedCornerShape(topStart = 16.dp, topEnd = 16.dp)
+                ) {
                     Navigator(screen = RootScreen) { navigator ->
                         RootNavigator.setNavigator(navigator)
                         CurrentScreen()
