@@ -1,5 +1,7 @@
 package yegor.cheprasov.mbm_voyager.screenModels
 
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.collectLatest
@@ -7,11 +9,10 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import yegor.cheprasov.mbm_data.repositories.NotesRepository
 import yegor.cheprasov.mbm_database.entities.Note
-import yegor.cheprasov.mbm_voyager.utils.BaseScreenModel
 
 class FavoriteNotesScreenModel(
     private val notesRepository: NotesRepository
-) : BaseScreenModel() {
+) : ScreenModel {
 
     private val mutableState = MutableStateFlow(State())
 
@@ -21,7 +22,7 @@ class FavoriteNotesScreenModel(
         observeFavoriteNotes()
     }
 
-    private fun observeFavoriteNotes() = scope.launch {
+    private fun observeFavoriteNotes() = screenModelScope.launch {
         notesRepository
             .observeFavoriteNotes()
             .collectLatest { list ->

@@ -1,0 +1,16 @@
+package yegor.cheprasov.mbm_decompose.decompose.allNotes
+
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import yegor.cheprasov.mbm_decompose.decompose.PageType
+import yegor.cheprasov.mbm_decompose.instance.AllNotesInstance
+
+class PreviewAllNotesComponent : AllNotesComponent {
+    override val state: StateFlow<AllNotesInstance.State>
+        get() = MutableStateFlow(AllNotesInstance.State())
+
+    override fun showBottom() = Unit
+
+    override val type: PageType
+        get() = PageType.AllNotes
+}

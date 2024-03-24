@@ -1,27 +1,28 @@
 package yegor.cheprasov.mbm_voyager.screenModels
 
+import cafe.adriel.voyager.core.model.ScreenModel
+import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.launch
 import yegor.cheprasov.mbm_data.repositories.NotesRepository
-import yegor.cheprasov.mbm_voyager.utils.BaseScreenModel
 
 class NoteBottomSheetScreenModel(
     private val noteId: Int,
     private val notesRepository: NotesRepository
-) : BaseScreenModel() {
+) : ScreenModel {
 
-    fun toggleFavorite(callback: () -> Unit) = scope.launch {
+    fun toggleFavorite(callback: () -> Unit) = screenModelScope.launch {
         val note = notesRepository.getNoteByUid(noteId) ?: return@launch callback()
 
         notesRepository.updateFavoriteStatus(uid = noteId, newStatus = note.isFavorite.not())
         callback()
     }
 
-    fun removeNote(callback: () -> Unit) = scope.launch {
+    fun removeNote(callback: () -> Unit) = screenModelScope.launch {
         notesRepository.remove(noteId)
         callback()
     }
 
-    fun getNoteTitle(callback: (String) -> Unit) = scope.launch {
+    fun getNoteTitle(callback: (String) -> Unit) = screenModelScope.launch {
         val note = notesRepository.getNoteByUid(noteId) ?: return@launch
 
         callback(note.title)

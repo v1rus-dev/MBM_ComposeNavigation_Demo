@@ -75,4 +75,5 @@ dependencies {
 
     implementation(libs.koin.core)
     implementation(libs.koin.android)
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
 }

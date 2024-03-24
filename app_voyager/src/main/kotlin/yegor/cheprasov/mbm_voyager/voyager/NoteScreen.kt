@@ -57,12 +57,9 @@ data class NoteScreen(
             }
         }
 
-        val dialogIsOpen by noteScreen.dialog.collectAsState()
-
         Screen(
             title = noteScreen.title,
             body = noteScreen.body,
-            dialogIsOpen = dialogIsOpen,
             dismissDialog = { noteScreen.clearDialog() },
             onBack = onBack
         )
@@ -73,13 +70,9 @@ data class NoteScreen(
     fun Screen(
         title: TextFieldState,
         body: TextFieldState,
-        dialogIsOpen: DialogType?,
         dismissDialog: () -> Unit,
         onBack: () -> Unit
     ) {
-        if (dialogIsOpen != null) {
-            AppDialog(dialogType = dialogIsOpen, onDismissRequest = dismissDialog)
-        }
 
         Scaffold(
             topBar = {

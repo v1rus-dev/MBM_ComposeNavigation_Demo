@@ -1,33 +1,32 @@
-package yegor.cheprasov.mbm_voyager.screenModels
+package yegor.cheprasov.mbm_decompose.instance
 
 import androidx.compose.foundation.ExperimentalFoundationApi
 import androidx.compose.foundation.text2.input.TextFieldState
 import androidx.compose.foundation.text2.input.setTextAndPlaceCursorAtEnd
-import cafe.adriel.voyager.core.model.ScreenModel
-import cafe.adriel.voyager.core.model.screenModelScope
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import yegor.cheprasov.mbm_data.repositories.NotesRepository
 import yegor.cheprasov.mbm_database.entities.Note
+import yegor.cheprasov.mbm_decompose.utils.BaseInstance
 import yegor.cheprasov.mbm_design.di.utils.DialogType
 
 @OptIn(ExperimentalFoundationApi::class)
-class NoteScreenModel(
+class NoteInstance(
     private val noteUid: Int? = null,
     private val initTitle: String = "",
     private val notesRepository: NotesRepository
-) : ScreenModel {
+) : BaseInstance() {
 
-    val title = TextFieldState(initTitle)
+    val title: TextFieldState = TextFieldState(initTitle)
     val body = TextFieldState()
 
     init {
         loadNote()
     }
 
-    fun save() = screenModelScope.launch {
+    fun save() = scope.launch {
         if (title.text.isEmpty() && body.text.isEmpty()) {
 
             if (noteUid != null) {
@@ -65,12 +64,11 @@ class NoteScreenModel(
         body: String,
     ): Note = Note(uid = uid, title = title, body = body, isFavorite = false)
 
-    private fun loadNote() = screenModelScope.launch {
+    private fun loadNote() = scope.launch {
         if (noteUid == null) return@launch
 
         val note = notesRepository.getNoteByUid(noteUid) ?: return@launch
 
         body.setTextAndPlaceCursorAtEnd(note.body)
     }
-
 }
