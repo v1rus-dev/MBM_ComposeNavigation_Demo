@@ -16,7 +16,6 @@ import androidx.compose.material3.IconButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -33,7 +32,6 @@ import cafe.adriel.voyager.core.screen.Screen
 import cafe.adriel.voyager.koin.getScreenModel
 import cafe.adriel.voyager.navigator.LocalNavigator
 import org.koin.core.parameter.parametersOf
-import yegor.cheprasov.mbm_design.di.AppDialog
 import yegor.cheprasov.mbm_design.di.utils.DialogType
 import yegor.cheprasov.mbm_voyager.screenModels.NoteScreenModel
 
@@ -60,7 +58,6 @@ data class NoteScreen(
         Screen(
             title = noteScreen.title,
             body = noteScreen.body,
-            dismissDialog = { noteScreen.clearDialog() },
             onBack = onBack
         )
     }
@@ -70,7 +67,6 @@ data class NoteScreen(
     fun Screen(
         title: TextFieldState,
         body: TextFieldState,
-        dismissDialog: () -> Unit,
         onBack: () -> Unit
     ) {
 
@@ -145,10 +141,6 @@ private fun PreviewContent() {
     NoteScreen(1).Screen(
         title = title,
         body = body,
-        dialogIsOpen = dialogIsOpen,
-        dismissDialog = {
-            dialogIsOpen = null
-        },
         onBack = {
             dialogIsOpen = DialogType.DeleteNote(1, "Заголовок", {})
         })

@@ -59,7 +59,7 @@ fun AllNotesScreen(
                     NoteCardUI(title = it.title, desc = it.body, onClick = {
                         rootNavigator.push(RootConfig.Note(it.uid, it.title))
                     }, onLongClick = {
-                        component.showBottom()
+                        component.showBottom(it)
                     })
                 }
             }
